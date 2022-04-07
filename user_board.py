@@ -60,9 +60,9 @@ class UserBoard(MDApp):
         i = 0
         j = 0
         for index, meal in pd.read_csv(
-                r"/Users/eitanmoed/Hackathon 2022/Hackathon/Dishes_Database.csv").iterrows():
+                r"C:\Users\omerk\Desktop\Dishes_Database.csv").iterrows():
             if str(meal['dish name']) != 'nan':
-                b = Button(text=str(meal['dish name']), pos_hint=(
+                b = Button(text=str(meal['dish name']) + '\n' + str(meal['restaurant']) + '\n' + 'Amount:' + str(meal['amount']), pos_hint=(
                     {'center_x': 0.2 + i / 5, 'center_y': 0.6 - j / 5}),
                            size_hint=(None, None), size=(dp(100), dp(100)),
                            background_color=(0, 0, 0, 0.3),
