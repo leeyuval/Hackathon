@@ -1,4 +1,5 @@
 from kivy.metrics import dp
+from kivy.uix.togglebutton import ToggleButton
 from kivymd.app import MDApp
 import pandas as pd
 from kivymd.uix.screen import Screen
@@ -8,7 +9,7 @@ from kivymd.uix.button import MDRectangleFlatButton
 from kivymd.uix.screen import Screen
 from kivy.uix.image import AsyncImage
 from kivy.uix.stacklayout import StackLayout
-import dish_board
+from dish_board import DishesBoard
 from kivy.uix.button import Button
 
 
@@ -52,19 +53,20 @@ class UserBoard(MDApp):
         return self.screen
 
     def add_meals(self):
-        # meals = dish_board.Dishes_Board()
+        meals_board = DishesBoard(
+            r"C:\Users\omerk\Desktop\Dishes_Database.csv").board.iterrows()
         i = 0
         j = 0
-        for index, meal in pd.read_csv(
-                r"C:\Users\omerk\Desktop\Dishes_Database.csv").iterrows():
+        for index, meal in meals_board:
             if str(meal['dish name']) != 'nan':
-                b = Button(text=str(meal['dish name']), pos_hint=(
+                b = Button(text=str(meal['dish name']) + '\n' + str(
+                    meal['restaurant']) + '\n' + 'Amount:' + str(
+                    int(meal['amount'])), pos_hint=(
                     {'center_x': 0.2 + i / 5, 'center_y': 0.6 - j / 5}),
                            size_hint=(None, None), size=(dp(100), dp(100)),
-                           background_color=(0, 0, 0, 0.3),
+                           background_color=(0, 0, 0, 0.2),
                            bold=True, italic=True,
-                           color=(0 / 255, 51 / 255, 153 / 255, 1),
-                           )
+                           color=(0 / 255, 51 / 255, 153 / 255, 1))
                 self.screen.add_widget(b)
                 i = i + 1
             if i == 4:
