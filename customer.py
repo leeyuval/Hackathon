@@ -5,7 +5,9 @@ class Customer:
         self.__name = None
         self.__phone_num = None
         self.__address = None
-        self.__customer_num = None
+        # self.__customer_num = None
+
+
 
 
 
