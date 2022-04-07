@@ -41,12 +41,16 @@ class UserBoard(MDApp):
         bnt3 = MDRectangleFlatButton(text='Gluten free',
                                      pos_hint={'center_x': 0.70,
                                                'center_y': 0.8})
+        bnt4 = MDRectangleFlatButton(text='Vegan',
+                                     pos_hint={'center_x': 0.85,
+                                               'center_y': 0.8})
 
         self.screen.add_widget(img)
         self.screen.add_widget(filter)
         self.screen.add_widget(bnt1)
         self.screen.add_widget(bnt2)
         self.screen.add_widget(bnt3)
+        self.screen.add_widget(bnt4)
         self.screen.add_widget(label1)
         self.add_meals()
         return self.screen
@@ -56,7 +60,7 @@ class UserBoard(MDApp):
         i = 0
         j = 0
         for index, meal in pd.read_csv(
-                r"C:\Users\omerk\Desktop\Dishes_Database.csv").iterrows():
+                r"/Users/eitanmoed/Hackathon 2022/Hackathon/Dishes_Database.csv").iterrows():
             if str(meal['dish name']) != 'nan':
                 b = Button(text=str(meal['dish name']), pos_hint=(
                     {'center_x': 0.2 + i / 5, 'center_y': 0.6 - j / 5}),

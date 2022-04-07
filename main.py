@@ -1,5 +1,7 @@
 import customer
 import sign_in
+import dish_board
+import user_board
 
 from kivymd.app import MDApp
 from kivymd.uix.label import MDLabel, MDIcon
@@ -21,6 +23,7 @@ ScreenManager:
     WelcomeScreen:
     SignInScreen:
     SignUpScreen:
+    DishBoardScreen:
 
 
 <WelcomeScreen>:
@@ -55,7 +58,6 @@ ScreenManager:
     
 <SignUpScreen>:
     name: 'sign_up'
-            
     MDTextField:
         id: username
         hint_text: 'Username'
@@ -105,12 +107,16 @@ ScreenManager:
     MDRectangleFlatButton:
         text: 'Enter'
         pos_hint: {'center_x':0.4,'center_y':0.05}
-        on_press: root.manager.current = 'welcome_screen'
+        on_press: root.manager.current = 'dish_board'
     
     MDRectangleFlatButton:
         text: 'Back'
         pos_hint: {'center_x':0.6,'center_y':0.05}
         on_press: root.manager.current = 'welcome_screen'
+
+<DishBoardScreen>:
+    name: 'dish_board'
+    on_enter: root.call_page()
 
 """
 
@@ -140,14 +146,11 @@ class SignUpScreen(Screen):
         sign_in.set_username(self.ids.username.text)
         sign_in.save()
 
-
-
     def set_password(self):
         self.flag1 = False
         if self.flag:
             self.set_username()
         sign_in.set_password(self.username, self.ids.password.text)
-
 
     def validate_confirm_password(self):
         if self.flag1:
@@ -155,7 +158,6 @@ class SignUpScreen(Screen):
             sign_in.save()
         if self.ids.password.text != self.ids.confirm_password.text:
             self.ids.confirm_password.error = 'Passwords do not match'
-
 
     def set_email(self):
         if self.flag1:
@@ -169,13 +171,11 @@ class SignUpScreen(Screen):
         sign_in.set_phone(self.username, self.ids.phone.text)
         sign_in.save()
 
-
     def set_address(self):
         if self.flag1:
             self.set_password()
         sign_in.set_address(self.username, self.ids.address.text)
         sign_in.save()
-
 
     def set_type(self):
         if self.ids.Restaurant.active:
@@ -185,9 +185,12 @@ class SignUpScreen(Screen):
         sign_in.save()
 
 
+class DishBoardScreen(Screen):
+    def call_page(self):
+        user_board.UserBoard().run()
+
 
 sign_in = sign_in.SignIn("/Users/eitanmoed/Desktop/out.json", None)
-
 sm = ScreenManager()
 sm.add_widget(WelcomeScreen(name='welcome_screen'))
 sm.add_widget(SignInScreen(name='sign_in'))
