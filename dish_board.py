@@ -1,5 +1,5 @@
 import pandas as pd
-from Meal_class import Meal
+from meal_class import Meal
 
 
 class Dishes_Board:
@@ -7,10 +7,8 @@ class Dishes_Board:
         self.file = filename
         self.board = pd.read_csv(filename)
 
-
     def export_board(self):
         self.board.to_csv(self.file)
-
 
     def add_dish(self, dish: Meal):
         df_dish = {"dish name": dish.dish_name, "amount": dish.amount, "is kosher": dish.is_kosher,
