@@ -5,10 +5,14 @@ class Meal:
     amount =
     """
 
-    def __init__(self, expiration_date, labels: dict, amount):
+    def __init__(self, dish_name, expiration_date, amount,is_kosher:bool,restaurant):
+        self.dish_name = dish_name
         self.expiration_date = expiration_date
-        self.labels = labels
         self.amount = amount
+        self.is_kosher = is_kosher
+        self.restaurant = restaurant
+
+
 
     def set_expiration_date(self, new_exp):
         """
