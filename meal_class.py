@@ -1,6 +1,7 @@
 class Meal:
     """
     expiration_date =
+    labels =
     amount =
     """
 
@@ -35,3 +36,4 @@ class Meal:
         :param new_labels:
         :return:
         """
+        self.labels = new_labels

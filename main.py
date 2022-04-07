@@ -13,7 +13,7 @@ from kivy.lang import Builder
 
 class App(MDApp):
     def build(self):
-        return Sing.customer_info()
+        return Sign.customer_info()
 
     def customer_info(self):
         self.theme_cls.primary_palette = "Green"
