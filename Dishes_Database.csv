@@ -1,0 +1,6 @@
+dish name,restaurant,expiration date,amount,is kosher
+cookies,cookilida,30,20,False
+pizza,saacks-pizza,10,40,True
+Pasta,pasta-kasher,30,100,True
+sushi,Hasushia,50,20,False
+salad,greeniz,30,10,True
