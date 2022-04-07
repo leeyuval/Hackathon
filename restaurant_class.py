@@ -1,5 +1,5 @@
 import kivy
-from Meal_class import Meal
+from meal_class import Meal
 
 class Restaurant:
     """
